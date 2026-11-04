@@ -56,3 +56,13 @@ header .brand{display:flex;align-items:center;gap:12px;letter-spacing:0;line-hei
 }
 
 .spa-location .pulse-green{position:relative;isolation:isolate;transform-origin:center;animation:locationHeartBeat 1.85s cubic-bezier(.22,.61,.36,1) infinite}@media(max-width:680px){.spa-location .pulse-green{animation-duration:2.35s}}@media(prefers-reduced-motion:reduce){.spa-location .pulse-green{animation:none}.spa-location .btn{transition:none}}
+/* Hero: skin concerns, suitable approach, reassurance, then actions. */
+.hero-copy{max-width:520px}
+.hero-pain{font-size:19px;line-height:1.5;font-weight:700;margin:0 0 12px;color:#253c31}
+.hero-copy .intro{max-width:none;margin:0 0 12px}
+.hero-reassurance{font-size:14px;line-height:1.65;color:#536258;margin:0}
+.hero-trust{list-style:none;display:flex;flex-wrap:wrap;gap:8px 18px;margin:22px 0 0;padding:0;font-size:13px;font-weight:600;color:#244b3b}
+.hero-trust li{display:flex;gap:7px;align-items:baseline}
+.hero-trust li::before{content:"✓";font-weight:700}
+.hero .actions{margin:16px 0 0}
+@media(max-width:600px){.hero-pain{font-size:18px}.hero-copy .intro{font-size:16px}.hero-reassurance{font-size:14px}.hero-trust{display:grid;gap:6px;margin-top:18px}.hero .actions{display:grid;grid-template-columns:1fr;gap:10px}.hero .actions .button{width:100%;min-height:50px}}
