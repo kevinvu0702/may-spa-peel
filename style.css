@@ -66,3 +66,40 @@ header .brand{display:flex;align-items:center;gap:12px;letter-spacing:0;line-hei
 .hero-trust li::before{content:"✓";font-weight:700}
 .hero .actions{margin:16px 0 0}
 @media(max-width:600px){.hero-pain{font-size:18px}.hero-copy .intro{font-size:16px}.hero-reassurance{font-size:14px}.hero-trust{display:grid;gap:6px;margin-top:18px}.hero .actions{display:grid;grid-template-columns:1fr;gap:10px}.hero .actions .button{width:100%;min-height:50px}}
+
+/* Mobile reading sizes: primary copy 18px, supporting copy and controls 16px. */
+@media(max-width:680px){
+  body{font-size:18px;line-height:1.7}
+  .intro,.hero-copy .intro,.needs p,.steps p,.after p,.results-note,
+  .section-heading p,.product-section>div>p:not(.eyebrow),
+  .price-grid>div>p:not(.eyebrow):not(.small),.price-card>p:not(.amount),
+  .booking-grid>div>p:not(.eyebrow),details p,.notice,.price-card ul{font-size:18px;line-height:1.7}
+  .hero-pain{font-size:20px;line-height:1.5}
+  .hero-reassurance,.hero-trust,.small,.ribbon,.form-note,.consent,
+  label,#form-status,.text-link,.result-card span{font-size:16px;line-height:1.6}
+  .hero-reassurance,.small,.needs p,.steps p,.section-heading p,.results-note,details p{color:#46594d}
+  .after p{color:#e3ebdf}
+  .eyebrow,.spa-location .eyebrow{font-size:14px;line-height:1.5;letter-spacing:1px}
+  .photo figcaption,.condition-photo figcaption{font-size:14px;line-height:1.6}
+  h3,.steps h3{font-size:21px;line-height:1.4}
+  summary{font-size:18px;line-height:1.5}
+  .button,.spa-location .location-actions .btn{font-size:16px;line-height:1.5;min-height:52px}
+  input:not([type=checkbox]),select{font-size:18px;line-height:1.5;min-height:54px}
+  .field{margin-bottom:22px}
+  label{margin-bottom:8px}
+  .consent{gap:10px}
+  .consent input{width:20px;height:20px;margin-top:4px}
+  .steps{grid-template-columns:1fr;gap:24px}
+  .steps p{margin-top:8px}
+  .section-heading,.price-grid,.after-grid,.booking-grid,.product-section,.hero{grid-template-columns:1fr}
+  .needs,.results-grid{grid-template-columns:1fr}
+  .hero .actions{display:grid;grid-template-columns:1fr;gap:12px}
+  .hero-trust{display:grid;gap:8px}
+  .spa-location{font-size:18px}
+  .spa-location .lead-sm{font-size:18px}
+  .spa-location .maps-note{font-size:16px;line-height:1.6;color:#46594d}
+  .spa-location .location-actions{grid-template-columns:1fr}
+  footer{font-size:16px;line-height:1.7;flex-wrap:wrap;overflow-wrap:anywhere}
+  .mobile-bar a{font-size:15px;line-height:1.4;display:flex;align-items:center;justify-content:center;min-height:52px}
+  .header-call{font-size:14px}
+}
