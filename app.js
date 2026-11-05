@@ -20,7 +20,9 @@ form.addEventListener('submit',async e=>{e.preventDefault();if(sending)return;bo
  if(date.value<date.min||date.value>date.max||appointment<=new Date()){status.textContent='Vui lòng chọn lịch trong tương lai, tối đa 30 ngày.';return;}
  if(!cfg.bookingEndpoint){status.textContent='Chưa gửi thông tin vì bản xem trước chưa kết nối nhận lịch. Vui lòng gọi 0911 400 718.';return;}
  // Giữ nguyên request khi retry sau lỗi không rõ trạng thái; không ghi thông tin cá nhân vào storage.
- if(!pending)pending={request_id:crypto.randomUUID(),name:form.elements.namedItem('name').value.trim(),phone,date:date.value,time:time.value,website:form.elements.namedItem('website').value,consent:true,service_id:'peel',landing_page:location.origin+location.pathname,cta_position:cta,attribution};
+ if(!pending)pending={request_id:crypto.randomUUID(),name:form.elements.namedItem('name').value.trim(),phone,
+   condition:form.elements.namedItem('condition').value,
+   date:date.value,time:time.value,website:form.elements.namedItem('website').value,consent:true,service_id:'peel',landing_page:location.origin+location.pathname,cta_position:cta,attribution};
  sending=true;submit.disabled=true;status.textContent='Đang gửi yêu cầu…';const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),20000);
  try{const response=await fetch(cfg.bookingEndpoint,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(pending),signal:controller.signal,redirect:'follow'});if(!response.ok)throw Error('network');const result=await response.json();if(!result.ok||result.request_id!==pending.request_id)throw Error('save');
  event('booking_request_submit',pending.cta_position);pending=null;form.reset();bounds();status.textContent='Mây đã nhận yêu cầu và sẽ liên hệ xác nhận.';document.querySelector('#success').showModal();

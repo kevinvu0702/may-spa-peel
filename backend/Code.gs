@@ -28,7 +28,7 @@ function doPost(e) {
     const clean=v=>{const s=String(v||'').slice(0,300);return /^[=+@\-\t\r\n]/.test(s)?"'"+s:s;};
     const a=b.attribution||{};
     const midnight=new Date(b.date+'T00:00:00+07:00');
-    const row=[bookingId,now,midnight,minutes/1440,clean(b.name),"'"+b.phone,'','cho_xac_nhan','landing_peel'];
+    const row=[bookingId,now,midnight,minutes/1440,clean(b.name),"'"+b.phone,clean(b.condition),'cho_xac_nhan','landing_peel'];
     ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','gbraid','wbraid'].forEach(k=>row.push(clean(a[k])));
     row.push(clean(b.landing_page),clean(b.cta_position),'','','','Peel da','', 'Đồng ý liên hệ xử lý lịch hẹn',now);
     sheet.appendRow(row);
