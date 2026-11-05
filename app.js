@@ -7,7 +7,22 @@ let cta='form', pending=null, sending=false;
 function vnDate(d=new Date()){return new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Ho_Chi_Minh',year:'numeric',month:'2-digit',day:'2-digit'}).format(d);}
 function bounds(){date.min=vnDate();date.max=vnDate(new Date(Date.now()+30*86400000));}bounds();
 for(let n=540;n<=1170;n+=15){const v=String(Math.floor(n/60)).padStart(2,'0')+':'+String(n%60).padStart(2,'0');time.add(new Option(v,v));}
-function event(name,position){if(cfg.analyticsEnabled){window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:name,landing_page:'peel',cta_position:position});}}
+if (cfg.analyticsEnabled && location.hostname === 'peelda.mayspahcm.com') {
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function () { window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', cfg.measurementId);
+
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://www.googletagmanager.com/gtag/js?id=' + cfg.measurementId;
+  document.head.appendChild(script);
+}
+function event(name, position) {
+  if (cfg.analyticsEnabled && typeof window.gtag === 'function') {
+    window.gtag('event', name, {send_to: cfg.measurementId, landing_page: 'peel', cta_position: position});
+  }
+}
 document.querySelectorAll('a[href^="tel:"]').forEach(a=>a.addEventListener('click',()=>event('phone_click',a.dataset.cta||'footer')));
 document.querySelectorAll('[data-book]').forEach(a=>a.addEventListener('click',()=>{cta=a.dataset.book;}));
 document.querySelectorAll('[data-directions]').forEach(a=>a.addEventListener('click',()=>event('directions_click','booking')));
