@@ -11,6 +11,7 @@ function event(name,position){if(cfg.analyticsEnabled){window.dataLayer=window.d
 document.querySelectorAll('a[href^="tel:"]').forEach(a=>a.addEventListener('click',()=>event('phone_click',a.dataset.cta||'footer')));
 document.querySelectorAll('[data-book]').forEach(a=>a.addEventListener('click',()=>{cta=a.dataset.book;}));
 document.querySelectorAll('[data-directions]').forEach(a=>a.addEventListener('click',()=>event('directions_click','booking')));
+note.hidden = Boolean(cfg.bookingEndpoint);
 note.textContent=cfg.bookingEndpoint?'Mây sẽ liên hệ xác nhận sau khi nhận yêu cầu.':'Bản xem trước: chưa kết nối nhận lịch. Chị/bạn vui lòng gọi 0911 400 718 để hẹn trực tiếp.';
 const attribution={};for(const k of ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','gbraid','wbraid']){const v=new URLSearchParams(location.search).get(k);if(v)attribution[k]=v.slice(0,300);}
 form.addEventListener('submit',async e=>{e.preventDefault();if(sending)return;bounds();if(!form.reportValidity())return;
